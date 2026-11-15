@@ -187,10 +187,17 @@ function CheckoutPage() {
                 <Copy className="h-4 w-4" /> Copy order message
               </button>
             </div>
-            {!waUrl && (
+            {!waUrl ? (
               <p className="mt-3 text-xs text-muted-foreground">
                 WhatsApp ordering switches on once Foodie Zone confirms its ordering number.
               </p>
+            ) : (
+              !business.whatsappNumberVerified && (
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Orders go to the publicly listed number {business.phone.display} — a placeholder until Foodie Zone
+                  confirms its WhatsApp ordering number.
+                </p>
+              )
             )}
           </div>
         </aside>
