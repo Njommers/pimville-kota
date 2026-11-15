@@ -63,7 +63,7 @@ describe("cart", () => {
     const url = whatsappOrderUrl(business.whatsappNumber, msg);
     expect(url).not.toBeNull();
     expect(url).toContain("https://wa.me/27698363353?text=");
-    const text = decodeURIComponent(url!.split("text=")[1]);
+    const text = decodeURIComponent(url!.split("text=")[1] ?? "");
     expect(text).toContain("2 x Beef Kota @ R65.00 = R130.00");
     expect(text).toContain("Total: R130.00");
   });
