@@ -145,7 +145,7 @@ function RootComponent() {
           <SiteFooter />
         </div>
         <CartSheet />
-        <Toaster position="bottom-center" />
+        <Toaster position="bottom-center" theme="dark" />
       </CartProvider>
     </QueryClientProvider>
   );

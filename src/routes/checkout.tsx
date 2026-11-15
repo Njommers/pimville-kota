@@ -67,7 +67,7 @@ function CheckoutPage() {
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[1.3fr_1fr]">
         {/* Items */}
-        <section aria-label="Selected meals" className="rounded-2xl border border-border bg-card">
+        <section aria-label="Selected meals" className="h-fit rounded-2xl border border-border bg-card">
           <ul className="divide-y divide-border">
             {lines.map((l) => {
               const item = menuById[l.id];

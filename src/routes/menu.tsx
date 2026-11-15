@@ -7,6 +7,8 @@ import { useCart } from "@/lib/cart-context";
 import { categories, menuItems, type CategoryId } from "@/lib/menu";
 import { cn } from "@/lib/utils";
 
+const categoryLabel = Object.fromEntries(categories.map((c) => [c.id, c.label])) as Record<CategoryId, string>;
+
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
@@ -24,7 +26,7 @@ function MenuPage() {
   const [editing, setEditing] = useState(false);
   const { resetPrices } = useCart();
 
-  const shown = active === "all" ? categories : categories.filter((c) => c.id === active);
+  const shown = active === "all" ? menuItems : menuItems.filter((m) => m.category === active);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
@@ -86,24 +88,14 @@ function MenuPage() {
         </div>
       </div>
 
-      <div className="space-y-16">
-        {shown.map((cat) => {
-          const items = menuItems.filter((m) => m.category === cat.id);
-          return (
-            <section key={cat.id} aria-labelledby={`cat-${cat.id}`}>
-              <div className="mb-6 flex items-center gap-4">
-                <h2 id={`cat-${cat.id}`} className="text-4xl">{cat.label}</h2>
-                <span className="h-px flex-1 bg-border" />
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map((item) => (
-                  <ProductCard key={item.id} item={item} editing={editing} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {shown.map((item) => (
+          <ProductCard key={item.id} item={item} editing={editing} categoryLabel={categoryLabel[item.category]} />
+        ))}
       </div>
+      <p className="mt-10 text-xs text-muted-foreground">
+        All prices are sample prices for demonstration and are not Foodie Zone’s actual prices.
+      </p>
     </div>
   );
 }

@@ -5,7 +5,15 @@ import { formatZAR } from "@/lib/cart";
 import { useCart } from "@/lib/cart-context";
 import type { MenuItem } from "@/lib/menu";
 
-export function ProductCard({ item, editing = false }: { item: MenuItem; editing?: boolean }) {
+export function ProductCard({
+  item,
+  editing = false,
+  categoryLabel,
+}: {
+  item: MenuItem;
+  editing?: boolean;
+  categoryLabel?: string;
+}) {
   const { add, prices, setPrice } = useCart();
   const price = prices[item.id] ?? item.samplePrice;
 
@@ -27,7 +35,10 @@ export function ProductCard({ item, editing = false }: { item: MenuItem; editing
         )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="text-2xl">{item.name}</h3>
+        <div>
+          {categoryLabel && <p className="eyebrow mb-1.5 text-[10px]">{categoryLabel}</p>}
+          <h3 className="text-2xl">{item.name}</h3>
+        </div>
         <p className="text-xs text-muted-foreground">Ingredients and portion size to be confirmed.</p>
         <div className="mt-auto flex items-end justify-between gap-3 pt-2">
           {editing ? (
