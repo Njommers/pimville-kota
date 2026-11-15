@@ -25,8 +25,8 @@ export function LocationSection({ headingLevel = "h2" }: { headingLevel?: "h1" |
             <PendingBadge>Publicly listed, needs confirmation</PendingBadge>
           </ContactRow>
           <ContactRow icon={<MessageCircle className="h-5 w-5" />} label="WhatsApp orders">
-            <span className="text-muted-foreground">Ordering number to be confirmed</span>
-            <PendingBadge />
+            <span className="tabular-nums">{business.phone.display}</span>
+            <PendingBadge>Placeholder — needs confirmation</PendingBadge>
           </ContactRow>
           <ContactRow icon={<Instagram className="h-5 w-5" />} label="Instagram">
             <span>{business.instagram.handle}</span>
