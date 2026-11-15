@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
+import beefKota from "@/assets/beef-kota.webp";
 import heroImage from "@/assets/hero-spread.webp";
 import { LocationSection } from "@/components/site/LocationSection";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -95,7 +96,7 @@ function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 md:grid-cols-2">
           <div className="overflow-hidden rounded-2xl">
             <img
-              src={menuItems[0].image}
+              src={beefKota}
               alt="Beef kota with chips, cheese and atchar"
               width={800}
               height={800}

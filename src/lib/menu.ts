@@ -39,4 +39,4 @@ export const menuItems: MenuItem[] = [
   { id: "sample-cold-drink", name: "Cold Drink", category: "drinks", image: drinks, samplePrice: 20, publiclyListed: false },
 ];
 
-export const menuById = Object.fromEntries(menuItems.map((m) => [m.id, m])) as Record<string, MenuItem>;
+export const menuById = Object.fromEntries(menuItems.map((m) => [m.id, m])) as Record<string, MenuItem | undefined>;

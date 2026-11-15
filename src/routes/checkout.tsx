@@ -29,7 +29,7 @@ function CheckoutPage() {
   const [notes, setNotes] = useState("");
 
   const named = useMemo(
-    () => lines.map((l) => ({ id: l.id, name: menuById[l.id].name, qty: l.qty, unitPrice: prices[l.id] ?? 0 })),
+    () => lines.map((l) => ({ id: l.id, name: menuById[l.id]?.name ?? l.id, qty: l.qty, unitPrice: prices[l.id] ?? 0 })),
     [lines, prices],
   );
   const message = buildWhatsAppMessage(named, { customerName: name, notes });
@@ -71,6 +71,7 @@ function CheckoutPage() {
           <ul className="divide-y divide-border">
             {lines.map((l) => {
               const item = menuById[l.id];
+              if (!item) return null;
               const price = prices[l.id] ?? 0;
               return (
                 <li key={l.id} className="flex items-center gap-4 p-4 sm:p-5">

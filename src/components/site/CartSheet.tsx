@@ -35,6 +35,7 @@ export function CartSheet() {
             <ul className="flex-1 divide-y divide-border overflow-y-auto px-5">
               {lines.map((l) => {
                 const item = menuById[l.id];
+                if (!item) return null;
                 const price = prices[l.id] ?? 0;
                 return (
                   <li key={l.id} className="flex gap-4 py-4">
