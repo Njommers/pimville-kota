@@ -1,3 +1,4 @@
+import type React from "react";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 import * as cart from "@/lib/cart";
@@ -23,7 +24,12 @@ type CartContextValue = {
   setOpen: (open: boolean) => void;
 };
 
-const CartContext = createContext<CartContextValue | null>(null);
+// Keep a single context instance across hot reloads: if this module is re-evaluated,
+// a fresh createContext() would split providers and consumers onto different contexts.
+const globalForCart = globalThis as typeof globalThis & {
+  __fzCartContext?: React.Context<CartContextValue | null>;
+};
+const CartContext = (globalForCart.__fzCartContext ??= createContext<CartContextValue | null>(null));
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [lines, setLines] = useState<cart.CartLine[]>([]);
