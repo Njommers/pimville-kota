@@ -56,4 +56,15 @@ describe("cart", () => {
     expect(whatsappOrderUrl(null, "hi")).toBeNull();
     expect(whatsappOrderUrl("27698363353", "hi")).toBe("https://wa.me/27698363353?text=hi");
   });
+
+  it("ordering is active and the link carries items, quantities and total", async () => {
+    const { business } = await import("@/lib/business");
+    const msg = buildWhatsAppMessage([{ id: "kota", name: "Beef Kota", qty: 2, unitPrice: 65 }]);
+    const url = whatsappOrderUrl(business.whatsappNumber, msg);
+    expect(url).not.toBeNull();
+    expect(url).toContain("https://wa.me/27698363353?text=");
+    const text = decodeURIComponent(url!.split("text=")[1] ?? "");
+    expect(text).toContain("2 x Beef Kota @ R65.00 = R130.00");
+    expect(text).toContain("Total: R130.00");
+  });
 });

@@ -155,7 +155,7 @@ function CheckoutPage() {
               <h2 className="flex items-center gap-2 text-3xl">
                 <MessageCircle className="h-6 w-6 text-primary" /> WhatsApp order
               </h2>
-              {!waUrl && <PendingBadge>Number pending</PendingBadge>}
+              {!business.whatsappNumberVerified && <PendingBadge>Number pending confirmation</PendingBadge>}
             </div>
             <pre className="mt-4 max-h-64 overflow-auto whitespace-pre-wrap rounded-xl bg-background p-4 font-sans text-sm leading-relaxed text-foreground/90">
               {message}
@@ -187,10 +187,17 @@ function CheckoutPage() {
                 <Copy className="h-4 w-4" /> Copy order message
               </button>
             </div>
-            {!waUrl && (
+            {!waUrl ? (
               <p className="mt-3 text-xs text-muted-foreground">
                 WhatsApp ordering switches on once Foodie Zone confirms its ordering number.
               </p>
+            ) : (
+              !business.whatsappNumberVerified && (
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Orders go to the publicly listed number {business.phone.display} — a placeholder until Foodie Zone
+                  confirms its WhatsApp ordering number.
+                </p>
+              )
             )}
           </div>
         </aside>

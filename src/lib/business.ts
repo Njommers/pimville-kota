@@ -15,9 +15,11 @@ export const business = {
   instagram: { handle: "@the_zone_for_the_foodie", verified: false },
   /**
    * WhatsApp ordering number in international format without "+" (e.g. "27698363353").
-   * Leave null until the owner confirms it; ordering stays switched off while null.
+   * PLACEHOLDER: currently the publicly listed phone number, pending owner confirmation.
+   * Set to null to switch ordering off, or replace with the confirmed ordering number.
    */
-  whatsappNumber: null as string | null,
+  whatsappNumber: "27698363353" as string | null,
+  whatsappNumberVerified: false,
   builtBy: "NextWave Web Solutions",
 } as const;
 
