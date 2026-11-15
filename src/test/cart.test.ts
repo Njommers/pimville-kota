@@ -39,6 +39,7 @@ describe("cart", () => {
 
   it("formats Rand with two decimals", () => {
     expect(formatZAR(419.7)).toBe("R419.70");
+    expect(formatZAR(1234.5)).toBe("R1 234.50");
   });
 
   it("WhatsApp message lists meals, quantities and the total", () => {

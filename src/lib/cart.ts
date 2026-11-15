@@ -36,8 +36,10 @@ export function subtotal(lines: CartLine[], prices: PriceBook): number {
   return cents / 100;
 }
 
+/** Deterministic (locale-independent) so server and browser render the same text. */
 export function formatZAR(amount: number): string {
-  return `R${amount.toLocaleString("en-ZA", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/\u00a0/g, " ")}`;
+  const [whole, cents] = (Math.round(amount * 100) / 100).toFixed(2).split(".");
+  return `R${whole.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}.${cents}`;
 }
 
 export function buildWhatsAppMessage(
