@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Business details live in `src/lib/business.ts` and menu items in `src/lib/menu.ts`; pages read from there so owner-confirmed changes happen in one place.
+- Cart maths and the WhatsApp message are pure functions in `src/lib/cart.ts` (covered by `src/test/cart.test.ts`); UI state stays in `CartProvider`, persisted to localStorage, because the site has no backend.
+- WhatsApp sending is enabled only when `business.whatsappNumber` is set, so an unconfirmed number never receives orders.
+- `formatZAR` is locale-independent to avoid server/browser hydration mismatches.
