@@ -58,7 +58,7 @@ export function SiteHeader() {
             </SheetTrigger>
             <SheetContent side="right" className="w-72 border-border bg-background">
               <SheetHeader>
-                <SheetTitle className="text-left font-display text-2xl uppercase">Menu</SheetTitle>
+                <SheetTitle className="text-left font-display text-2xl uppercase">Foodie Zone</SheetTitle>
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-1" aria-label="Mobile">
                 {nav.map((n) => (

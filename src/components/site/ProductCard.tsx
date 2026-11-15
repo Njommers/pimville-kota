@@ -58,7 +58,7 @@ export function ProductCard({
           ) : (
             <div>
               <p className="font-display text-3xl leading-none tabular-nums">{formatZAR(price)}</p>
-              <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">Sample price</p>
+              <p className="mt-1 whitespace-nowrap text-[11px] uppercase tracking-wider text-muted-foreground">Sample price</p>
             </div>
           )}
           <button
@@ -67,7 +67,7 @@ export function ProductCard({
               add(item.id);
               toast.success(`${item.name} added to cart`);
             }}
-            className="inline-flex items-center gap-1.5 rounded-full bg-flame px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-flame transition-transform hover:scale-[1.04] active:scale-95"
+            className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-flame px-4 py-2.5 text-sm font-bold text-primary-foreground shadow-flame transition-transform hover:scale-[1.04] active:scale-95"
           >
             <Plus className="h-4 w-4" />
             Add to Cart
