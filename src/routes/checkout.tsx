@@ -155,7 +155,7 @@ function CheckoutPage() {
               <h2 className="flex items-center gap-2 text-3xl">
                 <MessageCircle className="h-6 w-6 text-primary" /> WhatsApp order
               </h2>
-              {!waUrl && <PendingBadge>Number pending</PendingBadge>}
+              {!business.whatsappNumberVerified && <PendingBadge>Number pending confirmation</PendingBadge>}
             </div>
             <pre className="mt-4 max-h-64 overflow-auto whitespace-pre-wrap rounded-xl bg-background p-4 font-sans text-sm leading-relaxed text-foreground/90">
               {message}
